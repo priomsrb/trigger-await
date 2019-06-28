@@ -39,11 +39,11 @@ sudo mv trigger await -t /usr/local/bin
 
 ## `await <trigger-name>`
 
-Waits until `<trigger-name>` gets triggered. When `<trigger-name>` is triggered, a message will be printed, a notification shown, and the command will be finished. Can be skipped by pressing Enter.
+Waits until `<trigger-name>` gets triggered. Can be skipped by pressing Enter.
 
 ## `trigger <trigger-name>`
 
-Activates the trigger `<trigger-name>`. Can trigger multiple awaits waiting for the same `<trigger-name>`.
+Activates the trigger `<trigger-name>`, and shows a notification. Can trigger multiple awaits waiting for the same `<trigger-name>`.
 
 # How it works
 
