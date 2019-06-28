@@ -1,0 +1,28 @@
+#!/bin/bash
+
+triggerDir=~/.trigger-await
+
+triggerName=$1
+startTime=$(date +%s)
+
+echo Waiting for trigger $1. Press ENTER to skip...
+
+while true
+do
+	currentTime=$(date +%s)
+	timeSinceStart=$(expr $currentTime - $startTime)
+
+	# Check if the trigger file was modified after we started awaiting
+	triggerFileUpdated=$(find $triggerDir/$triggerName -newermt "-$(echo $timeSinceStart) seconds"  2>/dev/null)
+
+	if [[ "$triggerFileUpdated" ]]; then
+		break
+	fi
+
+	# Wait 1 second for enter to be pressed
+    read -t 1
+
+	# Exit if enter was pressed
+	if [[ $? == 0 ]]; then exit; fi
+
+done
